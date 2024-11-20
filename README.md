@@ -69,15 +69,12 @@ Depois de instalado, basta atualizar o script (dentro de package.json) de execu�
 Vamos configurar o Prisma ORM com o seguinte schema de dados
 
 ```
-generator client {
-  provider = "prisma-client-js"
-}
-
 model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
   name     String?
   posts    Post[]
+  password String    @default("123456")
   comments Comment[]
 }
 
@@ -95,35 +92,11 @@ model Comment {
   id        Int     @id @default(autoincrement())
   title     String
   content   String
+  evaluation String?
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
   post      Post    @relation(fields: [postId], references: [id])
   postId    Int
 }
-
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}
-
 ```
-
-## Instalação da extensão do ThunderClient
-
-- Extension ID = rangav.vscode-thunder-client
-
-## Métodos do HTTP
-
-- https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Methods
-
-## Status Codes do HTTP
-
-- https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status#respostas_de_erro_do_servidor
-
-##
--JWT para criar os tokens
-
--Avançar no projeto usando middleware
-##
-Fazer uma aplicação com react native para consumir a api anterior feita, telas de login, middleware de autenticação, tokkens para continuidade de sessão.
