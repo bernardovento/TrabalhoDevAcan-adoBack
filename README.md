@@ -205,6 +205,10 @@ CommentRouter.get("/comments", CommentController.listComments);
 //Listar posts: Ela lista para nosso usuário os posts já publicados.
 postRouter.get("/posts", postController.listPosts);
 
+//Listar usuários: Ela lista para nosso usuário os posts já publicados com intuito de mostrar qual post é de quem.
+UserRouter.get("/users",/*UserMiddleWare.analisyToken*/UserController.listUser);
+
+
 //Inserir posts: ELa permite que nosso usuário publique um post.
 postRouter.post("/post", UserMiddleware.analyzeToken, postController.createPost);
 
