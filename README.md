@@ -71,7 +71,7 @@ Depois de instalado, basta atualizar o script (dentro de package.json) de execu�
 
 Vamos configurar o Prisma ORM com o seguinte schema de dados
 
-```
+```prisma
 model User {
   id       Int       @id @default(autoincrement())
   email    String    @unique
@@ -107,7 +107,7 @@ model Comment {
 
 ## Como usamos o Cors?
 
-```
+```ts
 const allowedOrigins = ['http://localhost:8081']; // Serve para definir qual servidor pode acessar nossa API
 
 app.use(cors({
@@ -189,7 +189,7 @@ UserRouter.delete("/user/:id", UserController.deleteUser);
 
 ### Quais nossa Front realmente usa?
 
-```
+```ts
 // Tentar login: Ela usa para que o usuário realize o logine  receba o token de autenticação.
 AuthRouter.post("/auth/signin", AuthController.signin);
 
